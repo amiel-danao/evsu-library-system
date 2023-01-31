@@ -1,0 +1,293 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list %}
+{% load bootstrap5 %}
+
+{% load crispy_forms_tags %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}">
+    {% if cl.formset %}
+        <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+    {% endif %}
+    {% if cl.formset or action_form %}
+        <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+    {% endif %}
+    {{ media.css }}
+    {% if not actions_on_top and not actions_on_bottom %}
+        <style>
+            #changelist table thead th:first-child {
+                width: inherit
+            }
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ media.js }}
+{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+            <div class="d-block mb-4 mb-md-0">
+                <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'admin:index' %}">
+                                <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                          <a href="{% url 'admin:app_list' cl.opts.app_config.label %}">
+                            {{ cl.opts.app_config.verbose_name }}
+                          </a>
+                        </li>
+                        <li class="breadcrumb-item active"
+                            aria-current="page">{{ cl.opts.verbose_name_plural|capfirst }}</li>
+                    </ol>
+                </nav>
+                <h2 class="h4">{{ cl.opts.verbose_name_plural|capfirst }}</h2>
+            </div>
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+{% for message in messages %}
+
+<div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div>{{ message }}</div>
+</div>
+{% endfor %}
+
+    <div class="table-settings mb-4">
+        <div class="row align-items-center justify-content-between">
+            <div class="col col-md-8 col-lg-3 col-xl-8">
+                <div class="row">
+                {% block search %}{% search_form cl %}{% endblock %}
+
+                {% if scan %}
+                    <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#qrScanModal">
+                        Scan QR <i class="bi bi-qr-code"></i>
+                    </button>
+                    
+                    <div class="modal" tabindex="-1" id="qrScanModal">
+                        <div class="modal-dialog">
+                        <form class="form" method="post" action="{{ scan.url }}">
+                            {% csrf_token %}
+                            <div class="modal-content">                            
+                            
+                            <div class="modal-header">
+                                
+                                    <h5 class="modal-title">{{ scan.modal_title|safe  }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    
+                                
+                            </div>
+                            <div class="modal-body">
+                              <div id="reader" width="600px"></div>
+                              {% if scan_out_form %}
+                                <label for="id_book_title">Book Instance</label>
+                                <input type="text" id="id_book_title" class="form-control-plaintext" name="book_title" readonly>
+                                <input type="text" id="id_book" name="book" hidden required>
+
+                                <label for="id_borrower">Borrower</label>
+                                <input type="text" id="id_borrower" name="borrower" required>
+                                {{ scan_out_form.return_date|as_crispy_field }}
+                              {% endif %}
+
+                              {% if scan_in_form %}
+                                <label for="id_book_title">Book Instance</label>
+                                <input type="text" id="id_book_title" class="form-control-plaintext" name="book_title" readonly>
+                                <input type="text" id="id_book" name="book" hidden required>
+
+                                <!-- <label for="id_borrower">Borrower</label> -->
+                                <!-- <input type="text" hidden id="id_borrower" class="form-control-plaintext" name="borrower"> -->
+                              {% endif %}
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-primary">{{ scan.modal_accept_text|safe  }}</button>
+                            </div>
+                          </div>
+                        </form>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- {% if filter %}
+                <div>
+                    <button type="button" class="btn btn-primary btn-inline mb-1" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        Filter <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form action="" method="get" class="form form-inline mb-2">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="filterModalLabel">Filter</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                    {% bootstrap_form filter.form  %}
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Filter <i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                {% endif %} -->
+
+                {% if cl.has_filters %}
+                <div>
+                    <button type="button" class="btn btn-primary btn-inline mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Filter <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="" method="get" class="form form-inline mb-2">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Search</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                    {% for spec in cl.filter_specs %}
+                                        {% admin_list_filter cl spec %}
+                                    {% endfor %}
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Search <i class="bi bi-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    
+                {% endif %}
+
+                </div>
+            </div>
+            <div class="d-block mb-4 mb-md-0 col-4 col-md-2">
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group">
+                        {% block object-tools-items %}
+                            {% change_list_object_tools %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% block date_hierarchy %}
+                {% if cl.date_hierarchy %}{% date_hierarchy cl %}{% endif %}
+            {% endblock %}
+            <form id="changelist-form" method="post" {% if cl.formset and cl.formset.is_multipart %}
+                  enctype="multipart/form-data"{% endif %} novalidate>
+                {% csrf_token %}
+
+                {% if cl.formset %}
+                    <div>{{ cl.formset.management_form }}</div>
+                {% endif %}
+
+                <div class="card card-body border-0 shadow table-wrapper table-responsive">
+                    {% block result_list %}
+                        {% if action_form and actions_on_top and cl.show_admin_actions %}
+                            {% admin_actions %}
+                        {% endif %}
+
+                        {% result_list cl %}
+
+                        {% if action_form and actions_on_bottom and cl.show_admin_actions %}
+                            {% admin_actions %}
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block pagination %}{% pagination cl %}{% endblock %}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block extrascript %}
+<script type="text/javascript">
+    var opts = {
+        minDate: "today"
+    };
+    $(".restricted_today_date").flatpickr(opts);
+</script>
+{% if scan %}
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script>
+        function selectElement(id, valueToSelect) {    
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+        }
+
+        
+
+        function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            // console.log(`Code matched = ${decodedText}`, decodedResult);
+            let books = JSON.parse(decodedText);
+            if (books.length == 0)
+            {
+                alert('Invalid QR code!');
+                return;
+            }
+            let book_instance = books[0];            
+            console.log(book_instance);
+
+            if (book_instance.hasOwnProperty('pk')){
+                selectElement('id_book', book_instance.pk);
+
+                if (books.length > 1){
+                    let book = books[1];
+                    
+                    console.log(book);
+                    if (book.hasOwnProperty('fields')){
+                        selectElement('id_book_title', book['fields'].title);
+                        console.log('has title');
+                    }
+                }
+            }
+            else{
+                alert('Invalid QR code!');
+            }
+        }
+
+        function onScanFailure(error) {
+        // handle scan failure, usually better to ignore and keep scanning.
+        // for example:
+        console.warn(`Code scan error = ${error}`);
+        }
+
+        $(document).ready(function(){
+            let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader",
+            { fps: 10, qrbox: {width: 250, height: 250} });
+            html5QrcodeScanner.render(onScanSuccess);
+        });
+
+    </script>
+{% endif %}
+{% endblock %}

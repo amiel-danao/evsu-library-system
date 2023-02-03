@@ -1,39 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'admin/base-fullscreen.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
+{% block title %} Sign in {% endblock %}
+{% block extrastyle %}
+<link type="text/css" href="{% static 'custom/admin/admin.css' %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
 
-<section class="vh-100">
-    <div class="container h-100">
-      <div class="row d-flex align-items-center justify-content-center h-100">
-        <div class="col-5 bg-white p-5">
-            <h3 class="text-center">{{ app_short_title }} - Login</h3>
-                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                    <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="tab-login"  href="{% url 'system:login' %}" role="tab"
-                        aria-controls="pills-login" aria-selected="true">Login</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="tab-register"  href="{% url 'system:register' %}" role="tab"
-                        aria-controls="pills-register" aria-selected="false">Register</a>
-                    </li>
-                </ul>
-                
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                        <form method="POST" action="{% url 'system:login' %}">
+
+  <main>
+    <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center form-bg-image">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                        <div class="text-center text-md-center mb-4 mt-md-0">
+                            <img class="img-fluid w-25" src="{% static 'admin_volt/assets/img/favicon/logo.png' %}">
+                            <br>
+                            <p>Library Information Management System - Dulag Campus</p>
+                        </div>
+                        <form method="POST" action="{% url 'system:login' %}" class="mt-4">
                             {% csrf_token %}
+
                             {{ form|crispy }}
-                            <div class="row mb-4">
+                            <div class="d-grid">
+                                <button type="submit" name="login" class="btn btn-primary">Sign in</button>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
                         </form>
                     </div>
-                    
-                </div>           
-        
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
+</main>
 {% endblock content %}

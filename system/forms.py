@@ -1,6 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Submit, Layout, Div, Field
+from crispy_bootstrap5.bootstrap5 import FloatingField
 from dal import autocomplete
 from django.utils.translation import gettext as _
 from django import forms
@@ -101,7 +102,7 @@ class RegisterForm(UserCreationForm):
 class StudentProfileForm(forms.ModelForm):
 
     school_id = forms.RegexField(
-        required=True,
+        required=False,
         regex='^(?:\d{4}-\d{5})$',
         error_messages = {'invalid': _("Please input a valid Student Id No pattern: YYYY-xxxxx")}, label='Student Id No.')
 
@@ -110,14 +111,49 @@ class StudentProfileForm(forms.ModelForm):
         regex=MOBILE_NO_REGEX,
         error_messages = {'invalid': _("Please input a valid mobile number")}, label='Mobile No.')
 
+    address = forms.CharField(widget=forms.Textarea())
+
+    email = forms.EmailField(required=False)
+
     def __init__(self, *args, **kwargs):
         super(StudentProfileForm, self).__init__(*args, **kwargs)
         self.fields['email'].disabled = True
+        self.fields['school_id'].disabled = True
 
     class Meta:
         model = Student
         fields = '__all__'
-        exclude = ('date_returned', 'borrower')
+        exclude = ('user', 'qualified')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Div(
+                Div(FloatingField('email', readonly=True, disabled=True, required=False), css_class='col-6 rounded',),
+                Div(FloatingField('school_id', readonly=True, disabled=True, required=False), css_class='col-6 rounded',),
+                css_class='row mb-2',
+            ),
+            Div(
+                Div(FloatingField('first_name'), css_class='col-4 rounded',),
+                Div(FloatingField('middle_name'), css_class='col-4 rounded',),
+                Div(FloatingField('last_name'), css_class='col-4 rounded',),
+                css_class='row mb-2',
+            ),
+            Div(
+                Div(FloatingField('gender', css_class='w-100'), css_class='col-4 rounded',),
+                Div(FloatingField('section'), css_class='col-4 rounded',),
+                Div(FloatingField('year', css_class='w-100'), css_class='col-4 rounded',),
+                css_class='row mb-2',
+            ),
+            Div(
+                Div(FloatingField('address'), css_class='col-6 rounded',),
+                Div(FloatingField('mobile_no'), css_class='col-6 rounded',),
+                css_class='row mb-2',
+            ),
+            Submit('submit', 'Update'),
+        )
+
 
 
 class LoginForm(AuthenticationForm):

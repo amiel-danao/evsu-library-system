@@ -92,7 +92,11 @@
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                                     <li class="breadcrumb-item">
+                                        {% if request.user.is_superuser %}
                                         <a href="{% url 'admin:index' %}"><i class="fa fa-home"></i></a>
+                                        {% else %}
+                                        <a href="{% url 'system:index' %}"><i class="fa fa-home"></i></a>
+                                        {% endif %}
                                     </li>
                                     <li class="breadcrumb-item">{% if title %} &rsaquo; {{ title }}{% endif %}</li>
                                 </ol>

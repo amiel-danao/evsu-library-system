@@ -32,8 +32,17 @@ def global_context(request):
         'min_time': get_correct_today(format='%I:%M'),
         'user_id': getUserId(request),
         'mobile_no_regex': MOBILE_NO_REGEX,
-        'model_icons': MODEL_ICONS
+        'model_icons': MODEL_ICONS,
+        'profile': get_student_profile(request)
     }
+
+
+def get_student_profile(request):
+    if request.user.is_superuser or not request.user.is_authenticated:
+        return None
+
+    student = Student.objects.filter(user=request.user).first()
+    return student
 
 
 def getUserId(request):

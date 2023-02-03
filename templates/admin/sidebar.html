@@ -54,12 +54,20 @@
             <li class="nav-item text-center">
             <img class="w-75 text-center p-2 img-fluid" src="/static/admin_volt/assets/img/favicon/logo.png" alt="">
                 <div class="text-center text-black font-poppins">
+                    {% if request.user.is_superuser %}
                     <p class="p-0 m-0 text-sm font-poppins">Administrator</p>
+                    {% else %}
+                    <p class="p-0 m-0 text-sm font-poppins">Student</p>
+                    {% endif %}
                 </div>
             </li>
 
             <li class="nav-item w-100 text-center mb-5">
+                {% if request.user.is_superuser %}
                 <a class="red-button p-1 nav-link" aria-current="page" href="{% url 'admin:logout' %}">
+                {% else %}
+                <a class="red-button p-1 nav-link" aria-current="page" href="{% url 'system:logout' %}">
+                {% endif %}
                     <i class="bi bi-box-arrow-left"></i>
                     Logout
                 </a>
@@ -82,10 +90,29 @@
                 {% endfor %}
              {% endwith %}
 
-             <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'transaction_history' in request.path|urlencode %} active {% endif %}" href="{% url 'system:transaction_history' %}" role="button">
+            {% if not request.user.is_superuser %}
+                {% if user_id %}
+                <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'books' in request.path|urlencode %} active {% endif %}" href="{% url 'system:books' %}" role="button">
+                    <i class="bi bi-book"></i>
+                    <span class="sidebar-text">Books</span>
+                </a>
+                <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'student_profile' in request.path|urlencode %} active {% endif %}" href="{% url 'system:student_profile' pk=user_id %}" role="button">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="sidebar-text">Profile</span>
+                </a>
+                {% endif %}
+
+            <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'transaction_history' in request.path|urlencode %} active {% endif %}" href="{% url 'system:transaction_history_student' %}" role="button">
                 <i class="bi bi-clock-history"></i>
                 <span class="sidebar-text">Transaction History</span>
             </a>
+            {% else %}
+
+             <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'transaction_history' in request.path|urlencode %} active {% endif %}" href="{% url 'system:transaction_history' %}" role="button">
+                <i class="bi bi-clock-history"></i>
+                <span class="sidebar-text">Transaction History</span>
+                </a>
+            {% endif %}
             
         <!-- </ul> -->
     </div>

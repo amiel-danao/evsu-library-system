@@ -8,11 +8,10 @@ from django.utils.translation import gettext_lazy as _
 
 class BookFilter(django_filters.FilterSet):
     isbn = django_filters.CharFilter(lookup_expr='icontains')
-    publish_date = django_filters.DateFilter(widget=forms.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = Book
-        fields = ['author', 'isbn', 'genre',]
+        fields = ['title' , 'author', 'isbn', 'genre',]
 
 
 class BookInstanceFilter(django_filters.FilterSet):

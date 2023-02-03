@@ -54,6 +54,7 @@
 
 </div>
 
+{% if filter %}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form action="" method="get" class="form form-inline mb-2">
@@ -74,5 +75,6 @@
         </form>
     </div>
   </div>
+  {% endif %} 
 
 {% endblock %}

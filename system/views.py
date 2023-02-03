@@ -27,10 +27,10 @@ from django_filters.views import FilterView
 from evsu_library.managers import CustomUserManager
 # from system.admin import OutgoingTransactionAdmin
 from system.forms import IncomingTransactionForm, LoginForm, OutgoingTransactionForm, RegisterForm, SMSForm, StudentProfileForm
-from system.models import Book, BookInstance, CustomUser, IncomingTransaction, OutgoingTransaction, Penalty, Student
+from system.models import Book, BookInstance, CustomUser, IncomingTransaction, OutgoingTransaction, Penalty, Qualified, Student
 from django_tables2.config import RequestConfig
-from system.filters import BookInstanceFilter, OutgoingTransactionFilter, PenaltyTransactionFilter
-from system.tables import BookInstanceTable, OutgoingTransactionTable, PenaltyTable
+from system.filters import BookFilter, BookInstanceFilter, OutgoingTransactionFilter, PenaltyTransactionFilter
+from system.tables import BookInstanceTable, BookTable, OutgoingTransactionTable, PenaltyTable
 import qrcode
 from django.core import serializers
 from django.shortcuts import render, redirect
@@ -41,9 +41,11 @@ from django.core.mail import send_mail
 from django.core import management
 
 
-
+@login_required
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+
+
+    return render(request=request, template_name='system/index.html')
 
 
 def show_qr(request, pk):
@@ -271,6 +273,21 @@ class StudentProfileUpdateView(LoginRequiredMixin, StudentsOnlyView, UpdateView)
     template_name = 'system/profile.html'
     success_url = reverse_lazy('system:student_profile', )
 
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        student = get_object_or_404(Student, user=request.user)
+        if pk != student.pk:
+            return HttpResponseForbidden()
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        student = get_object_or_404(Student, user=request.user)
+        if pk != student.pk:
+            return HttpResponseForbidden()
+
+        return super().post(request, *args, **kwargs)
+
     def form_valid(self, form):
         messages.success(self.request, 'Profile updated successfully.')
         return super().form_valid(form)
@@ -280,13 +297,13 @@ class StudentProfileUpdateView(LoginRequiredMixin, StudentsOnlyView, UpdateView)
         return reverse('system:student_profile', kwargs={'pk': self.object.id})
 
 
-class StudentBorrowedListView(LoginRequiredMixin, StudentsOnlyView, SingleTableView, FilterView):
-    model = OutgoingTransaction
-    table_class = OutgoingTransactionTable
-    template_name = 'system/student_borrowed_books.html'
-    filterset_class = OutgoingTransactionFilter
+class BookListView(LoginRequiredMixin, StudentsOnlyView, SingleTableView, FilterView):
+    model = Book
+    table_class = BookTable
+    template_name = 'system/student_books.html'
+    filterset_class = BookFilter
     table_pagination = {
-        'per_page': 5,
+        'per_page': 10,
     }
     strict=False
 
@@ -297,11 +314,23 @@ class StudentBorrowedListView(LoginRequiredMixin, StudentsOnlyView, SingleTableV
         
         return super().render_to_response(context)
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        qs=self.get_queryset()
+        # qs = qs.filter(transaction__paid=True)
+        f = self.filterset_class(self.request.GET, queryset=qs)
+        context['filter'] = f
+        table = self.table_class(f.qs)
+        RequestConfig(self.request).configure(table)
+        context['table'] = table
+
+        return context
+
+    # def get_queryset(self):
         
-        qs = super().get_queryset()
-        qs = qs.filter(borrower__email=self.request.user.email)
-        return qs
+    #     qs = super().get_queryset()
+    #     qs = qs.filter(borrower__user=self.request.user)
+    #     return qs
 
 
 def sms_view(request):
@@ -375,7 +404,7 @@ class StudentAutocomplete(autocomplete.Select2QuerySetView):
         qs = Student.objects.filter(~Q(school_id=''))
 
         if self.q:
-            qs = qs.filter(school_id__istartswith=self.q)
+            qs = qs.filter(school_id__istartswith=self.q, qualified=Qualified.QUALIFIED)
 
         return qs
 
@@ -430,6 +459,37 @@ class TransactionHistoryListView(LoginRequiredMixin, SingleTableView, FilterView
 
         context['available_apps'] = admin.site.get_app_list(self.request)
         return context
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            return HttpResponseForbidden()
+        return super().get(request, *args, **kwargs)
+
+
+class StudentTransactionHistoryListView(LoginRequiredMixin, SingleTableView, FilterView):
+    model = Penalty
+    table_class = PenaltyTable
+    template_name = 'system/transaction_history.html'
+    filterset_class = PenaltyTransactionFilter
+    table_pagination = {
+        'per_page': 10,
+    }
+    strict=False
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        qs=self.get_queryset()
+        qs = qs.filter(transaction__borrower__user=self.request.user)
+        table = self.table_class(qs)
+        RequestConfig(self.request).configure(table)
+        context['table'] = table
+
+        return context
+
+    # def get_queryset(self):
+    #     qs = super().get_queryset()
+    #     qs = qs.filter(transaction__borrower__user=self.request.user)
+    #     return qs
 
 
 @login_required

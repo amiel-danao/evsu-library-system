@@ -1,5 +1,5 @@
 import django_tables2 as tables
-from system.models import BookInstance, OutgoingTransaction, Penalty
+from system.models import Book, BookInstance, OutgoingTransaction, Penalty
 from django.utils.translation import gettext_lazy as _
 
 
@@ -12,6 +12,16 @@ class BookInstanceTable(tables.Table):
         attrs = {'class': 'table table-hover shadow records-table'}
         # row_attrs = {'data-href': lambda book: book.get_absolute_url}
 
+class BookTable(tables.Table):
+    def render_overtime_fine(self, value):
+        return f'₱{value}'
+
+    class Meta:
+        model = Book
+        template_name = "django_tables2/bootstrap5.html"
+        fields = ('isbn', 'author', 'title', 'genre', 'overtime_fine', 'inventory_stock')
+        empty_text = _("No books found for this search query.")
+        attrs = {'class': 'table table-hover shadow records-table'}
 
 class OutgoingTransactionTable(tables.Table):
     # status = tables.Column(empty_values=())

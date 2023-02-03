@@ -17,8 +17,7 @@ options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('icon',)
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(_("email address"), unique=True)
-    picture = models.ImageField(
-        upload_to='images/', blank=True, null=True, default='')
+    
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -37,6 +36,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = "User"
+
+    @property
+    def image_url(self):
+        if self.picture and hasattr(self.picture, 'url'):
+            return self.picture.url
 
 
 class TimeStampedMixin(models.Model):
@@ -147,6 +151,9 @@ class Book(models.Model):
         null=True
     )
 
+    picture = models.ImageField(
+        upload_to='books_images/', blank=True, null=True, default='')
+
     book_price = models.FloatField(default=0, validators=(MinValueValidator(0) ,), help_text='Student will be responsible to pay ₱{} if they lost the borrowed book')
     overtime_fine = models.FloatField(default=0, validators=(MinValueValidator(0) ,), help_text='Student will be responsible to pay ₱{} if they exceeded the return date')
 
@@ -207,6 +214,8 @@ class Student(models.Model):
     address = models.CharField(max_length=255, default='', blank=False)
     mobile_no = models.CharField(verbose_name='Phone Number', blank=True, max_length=11)
     qualified = models.IntegerField(default=Qualified.QUALIFIED, choices=Qualified.choices)
+    picture = models.ImageField(
+        upload_to='images/', blank=True, null=True, default='')
 
     @property
     def full_name(self):
@@ -284,6 +293,7 @@ class OutgoingTransaction(Transaction):
         return super().clean()
 
     class Meta:
+        unique_together = ('book', 'borrower', 'returned')
         verbose_name = _("Issued Book")
         verbose_name_plural = _("Issued Books")
 

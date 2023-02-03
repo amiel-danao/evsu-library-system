@@ -26,4 +26,7 @@ urlpatterns = [
     ),
     path('admin/send_sms/', views.send_sms, name='send_sms'),
     path('admin/mark_as_paid/<int:id>/', views.mark_as_paid, name='mark_as_paid'),
+    path('admin/mark_as_returned/<int:id>/', views.mark_as_returned, name='mark_as_returned'),
+    path('admin/transaction_history/', views.TransactionHistoryListView.as_view(), name='transaction_history'),
+    path('admin/send_penalty_notification/', views.send_penalty_notification, name='send_penalty_notification')
 ]

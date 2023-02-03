@@ -61,6 +61,11 @@ class OutgoingTransactionAdmin(NoRelatedFieldButtons):
     list_display_links = None
 
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        qs = qs.filter(returned=False)
+        return qs
+
     def borrower_name(self, obj):
         return f'{obj.borrower.first_name} {obj.borrower.last_name}'
 
@@ -71,8 +76,10 @@ class OutgoingTransactionAdmin(NoRelatedFieldButtons):
         return request.user.is_superuser and ("add" in request.path or "change" in request.path)
 
     def mark_as_returned(self, obj):
-        url = f'<div class="text-sm flex justify-center text-gray-900 w-25"><svg class="mark_as_returned" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" stroke-width="1" stroke="currentColor" class="w-6 h-6 cursor-pointer hover:text-green-500 transition-all"><path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path><path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path></svg></div>'
-        return mark_safe(url)
+        url = reverse('system:mark_as_returned',  args=[obj.id])
+        icon = f'<svg class="mark_as_returned" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" stroke-width="1" stroke="currentColor" class="w-6 h-6 cursor-pointer hover:text-green-500 transition-all"><path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path><path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path></svg>'
+        a_link = f'<a href="{url}">{icon}</a>'        
+        return mark_safe(f'<div class="text-sm flex justify-center text-gray-900 w-25">{a_link}</div>')
 
     def get_changeform_initial_data(self, request):
         book_id = request.GET.get('book_id', None)
@@ -211,7 +218,7 @@ class PenaltyAdmin(admin.ModelAdmin):
 
     @admin.display(description='Borrower Name')
     def borrower_name_link(self, obj):
-        url = f"%s?student_id={obj.transaction.borrower.pk}" %  reverse('admin:%s_%s_changelist' % (obj._meta.app_label,  obj._meta.model_name))
+        url = f"%s?borrower_id={obj.transaction.borrower.school_id}" %  reverse('system:transaction_history')
         link = f'<a href={url}>{obj.transaction.borrower.full_name}</a>'
         return mark_safe(link)
 
@@ -242,22 +249,9 @@ class PenaltyAdmin(admin.ModelAdmin):
 
 
     def changelist_view(self, request, extra_context=None):
-        request.GET._mutable=True
-        # qs = Penalty.objects.none
-        try_pk = request.GET.pop('student_id', None)
-        if try_pk is not None:
-            student_pk = try_pk[0]
-        else:
-            student_pk = request.GET.get('student_id', None)
-        if student_pk is not None:
-            qs = Penalty.objects.filter(transaction__paid=True, transaction__borrower__id=int(student_pk))
-        else:
-            qs = Penalty.objects.filter(transaction__paid=True)
-        table = PenaltyTable(qs)
         my_context = {
-            'transaction_table': table
+            'send_notif': True
         }
-        request.GET._mutable=False
         return super(PenaltyAdmin, self).changelist_view(request,
             extra_context=my_context)
 

@@ -81,6 +81,11 @@
                     {% endif %}
                 {% endfor %}
              {% endwith %}
+
+             <a class="text-start btn nav-link {% if 'bootstrap-tables' in segment or 'transaction_history' in request.path|urlencode %} active {% endif %}" href="{% url 'system:transaction_history' %}" role="button">
+                <i class="bi bi-clock-history"></i>
+                <span class="sidebar-text">Transaction History</span>
+            </a>
             
         <!-- </ul> -->
     </div>

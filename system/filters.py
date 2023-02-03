@@ -1,5 +1,5 @@
 import django_filters
-from system.models import Book, BookInstance
+from system.models import Book, BookInstance, Penalty
 from django.db.models import Q
 from django import forms
 from django.contrib import admin
@@ -28,6 +28,14 @@ class BookInstanceFilter(django_filters.FilterSet):
         model = BookInstance
         fields = ['book__author', 'book__isbn', 'book__genre','location', 'status']
 
+
+class PenaltyTransactionFilter(django_filters.FilterSet):
+    borrower_id = django_filters.CharFilter(field_name='transaction__borrower__school_id', lookup_expr='icontains', label='Borrower ID')
+    book_title = django_filters.CharFilter(field_name='transaction__book__title', lookup_expr='icontains', label='Book Title')
+
+    class Meta:
+        model = Penalty
+        fields = ['borrower_id', 'book_title']
 
 class OutgoingTransactionFilter(django_filters.FilterSet):
     pass

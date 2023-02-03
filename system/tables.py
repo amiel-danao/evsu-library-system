@@ -25,14 +25,19 @@ class OutgoingTransactionTable(tables.Table):
 
 
 class PenaltyTable(tables.Table):
+    unpaid_penalty = tables.Column(verbose_name= 'Penalty' )
+    
+    def render_unpaid_penalty(self, value):
+        return f'₱{value}'
+
     class Meta:
         model = Penalty
         template_name = "django_tables2/bootstrap5.html"
-        fields = ("transaction__paid", "unpaid_penalty", "date_paid")
+        fields = ("transaction__borrower__school_id", "transaction__borrower__full_name", "transaction__returned", "unpaid_penalty", "date_paid")
         empty_text = _("No records")
         attrs = {'class': 'table table-hover shadow records-table'}
 
-        
+
 
     # def render_status(self, value, record):
     #     if record:

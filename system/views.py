@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -28,8 +29,8 @@ from evsu_library.managers import CustomUserManager
 from system.forms import IncomingTransactionForm, LoginForm, OutgoingTransactionForm, RegisterForm, SMSForm, StudentProfileForm
 from system.models import Book, BookInstance, CustomUser, IncomingTransaction, OutgoingTransaction, Penalty, Student
 from django_tables2.config import RequestConfig
-from system.filters import BookInstanceFilter, OutgoingTransactionFilter
-from system.tables import BookInstanceTable, OutgoingTransactionTable
+from system.filters import BookInstanceFilter, OutgoingTransactionFilter, PenaltyTransactionFilter
+from system.tables import BookInstanceTable, OutgoingTransactionTable, PenaltyTable
 import qrcode
 from django.core import serializers
 from django.shortcuts import render, redirect
@@ -37,6 +38,8 @@ from io import BytesIO
 import base64
 from django.contrib import messages #import messages
 from django.core.mail import send_mail
+from django.core import management
+
 
 
 def index(request):
@@ -401,4 +404,51 @@ def mark_as_paid(request, id):
     penalty.date_paid = timezone.now()
     penalty.save()
 
+    return redirect('admin:system_penalty_changelist')
+
+
+class TransactionHistoryListView(LoginRequiredMixin, SingleTableView, FilterView):
+    model = Penalty
+    table_class = PenaltyTable
+    template_name = 'system/transaction_history.html'
+    filterset_class = PenaltyTransactionFilter
+    table_pagination = {
+        'per_page': 10,
+    }
+    strict=False
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['available_apps'] = admin.site.get_app_list(self.request)
+        qs=self.get_queryset()
+        qs = qs.filter(transaction__paid=True)
+        f = self.filterset_class(self.request.GET, queryset=qs)
+        context['filter'] = f
+        table = self.table_class(f.qs)
+        RequestConfig(self.request).configure(table)
+        context['table'] = table
+
+        context['available_apps'] = admin.site.get_app_list(self.request)
+        return context
+
+
+@login_required
+def mark_as_returned(request, id):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden()
+
+    transaction = get_object_or_404(OutgoingTransaction, id=id)
+    transaction.book.inventory_stock += 1
+    transaction.book.save()
+    transaction.returned = True
+    transaction.save()
+
+    return redirect('admin:system_outgoingtransaction_changelist')
+
+
+def send_penalty_notification(request):
+
+    management.call_command("notify_penalties")
+
+    messages.success(request, 'Notifications was sent successfully')
     return redirect('admin:system_penalty_changelist')

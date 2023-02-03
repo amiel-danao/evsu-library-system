@@ -6,10 +6,9 @@ from django.utils.translation import gettext as _
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
+from django.core.exceptions import ValidationError
 from system.context_processors import MOBILE_NO_REGEX
 from .models import SMS, CustomUser
-from django.core.exceptions import ValidationError
 from django import forms
 from evsu_library.managers import CustomUserManager
 from system.models import Book, BookInstance, IncomingTransaction, OutgoingTransaction, Student
@@ -160,10 +159,21 @@ class BookIssuanceForm(forms.ModelForm):
 
     class Meta:
         model = OutgoingTransaction
-        fields = ('__all__')
+        fields = '__all__'
         widgets = {
             'borrower': autocomplete.ModelSelect2(url='system:student-autocomplete')
         }
+
+    def clean(self):
+        cleaned_data = super(BookIssuanceForm, self).clean()
+        if self.instance.pk is not None:
+            return cleaned_data
+        book = self.cleaned_data.get('book')
+        
+        if book.inventory_stock <= 0:
+            self.add_error('book', 'Book has zero inventory stock!')
+            # raise forms.ValidationError('Book has zero inventory stock!')
+        # return cleaned_data
 
 
 

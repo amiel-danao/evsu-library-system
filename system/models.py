@@ -126,7 +126,7 @@ class Author(TimeStampedMixin):
         return '{0} ({1})'.format(self.first_name, self.last_name)
 
 
-class Book(CatalogueMixin):
+class Book(models.Model):
     """
     Model representing a book (but not a specific copy of a book).
     """
@@ -278,6 +278,10 @@ class OutgoingTransaction(Transaction):
     date_borrowed = models.DateField(verbose_name='Date of Book Issuance', default=timezone.now, blank=True)
     return_date = models.DateField(verbose_name='Date of Returning Book', blank=False, null=False, help_text='The system automatically set the min number of day of borrowing book in to 3 days.')
     paid = models.BooleanField(default=False)
+    returned = models.BooleanField(default=False)
+
+    def clean(self):
+        return super().clean()
 
     class Meta:
         verbose_name = _("Issued Book")

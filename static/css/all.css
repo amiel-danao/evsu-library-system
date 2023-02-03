@@ -15,3 +15,138 @@ main{
     /* Margin bottom by footer height */
     margin-bottom: 60px;
   }
+
+.font-poppins {
+    font-family: Poppins,sans-serif!important;
+}
+
+
+.red-button:hover{
+  cursor: pointer;
+  color: white;
+  background-color:  rgb(139 7 8);
+}
+
+.red-button{
+  color: black;
+  background-color:  white;
+}
+
+.sidebar .nav-item .red-button {
+  color: black;
+  background-color:  white;
+}
+
+.sidebar .nav-item .nav-link{
+  color: black;
+  background-color:white;
+}
+
+.nav-pills .nav-link:hover {
+  background-color:  rgba(218, 168, 168, 0.712);
+}
+
+.sidebar .nav-item .nav-link:hover{
+  color: white;
+  background-color:  rgb(139 7 8);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  cursor: pointer;
+  color: white;
+  background-color:  rgb(139 7 8);
+}
+
+.nav-pills .nav-link {
+  color: black;
+  background-color:white;
+}
+
+.sidebar .nav-item .nav-link:hover {
+  color: white;
+  background-color: rgb(139 7 8);
+}
+
+.sidebar .nav-item .nav-link .active{
+  color: #ffffff;
+  background-color: rgb(139 7 8);
+}
+
+/* 
+.btn-primary{
+  color: white;
+  background-color: rgb(139 7 8);
+} */
+
+.numberinput, .form-select, .vDateField, .vIntegerField{
+  min-width:20em;
+  width:20em;
+}
+
+.form-control:focus{
+  border-color:#1C64F2;
+}
+
+.form-control{
+  
+  border-radius:0.125rem;
+}
+
+.form-floating>label {
+  color:rgb(107 114 128);
+  
+}
+
+.form-floating>.form-select~label, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label{
+  opacity: 1;
+}
+
+.asteriskField{
+  color:red;
+}
+
+.form-text{
+  font-size: .875rem;
+  color:rgb(75 85 99);
+}
+
+.page-item .active{
+  background-color: rgb(139 7 8);
+}
+
+thead{
+  background-color: rgb(243 244 246);
+}
+
+th a, th span{
+  text-decoration: none;
+  color: rgb(107 114 128);
+}
+
+.invalid-feedback{
+  display: inline-block;
+}
+
+.errorlist{
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+}
+
+.datetimeshortcuts{
+  display: none;
+}
+
+.form-control[readonly] {
+  /* background-color: #E5E7EB; */
+  background-color: inherit;
+  opacity: 1;
+}
+
+.select2-selection--single{
+  padding: 1.5rem !important;
+}
+
+.mark_as_returned:hover, .mark_as_paid:hover{
+  cursor: pointer;
+  color:rgb(14 159 110);
+}

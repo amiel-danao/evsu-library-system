@@ -1,5 +1,5 @@
 main {
-    background-size: cover;
+    background-color: rgb(226 232 240);
 }
 
 .bg-dark {
@@ -10,3 +10,8 @@ main {
     color: #fff;
     background-color: #330977 !important;
 }
+
+.btn-primary{
+    background-color:  rgb(139 7 8);
+}
+

@@ -1,4 +1,5 @@
-
+from django.utils import timezone
+from django.shortcuts import get_object_or_404
 from django.conf import settings
 from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
@@ -19,13 +20,13 @@ from django.contrib.auth.decorators import login_required as login_required
 from django.contrib.auth import login
 from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, Http404
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, Http404, HttpResponseForbidden
 from django_tables2 import SingleTableView
 from django_filters.views import FilterView
-from kiosk_library.managers import CustomUserManager
-from system.admin import OutgoingTransactionAdmin
+from evsu_library.managers import CustomUserManager
+# from system.admin import OutgoingTransactionAdmin
 from system.forms import IncomingTransactionForm, LoginForm, OutgoingTransactionForm, RegisterForm, SMSForm, StudentProfileForm
-from system.models import Book, BookInstance, CustomUser, IncomingTransaction, OutgoingTransaction, Student
+from system.models import Book, BookInstance, CustomUser, IncomingTransaction, OutgoingTransaction, Penalty, Student
 from django_tables2.config import RequestConfig
 from system.filters import BookInstanceFilter, OutgoingTransactionFilter
 from system.tables import BookInstanceTable, OutgoingTransactionTable
@@ -205,9 +206,9 @@ class CustomLoginView(auth_views.LoginView): # 1. <--- note: this is a class-bas
 def send_verification_email(email, link):
     
     send_mail(
-        'NCST Kiosk - Student Account Registration',
+        'EVSU - Student Account Registration',
         f'To verify your account, please follow this link: {link} \n Please disregard this email if you do not create this account!',
-        'ncst.kiosk.gmail.com',
+        'evsu.gmail.com',
         (email, ),
         fail_silently=False,
     )
@@ -368,7 +369,7 @@ class StudentAutocomplete(autocomplete.Select2QuerySetView):
         if not self.request.user.is_authenticated:
             return Student.objects.none()
 
-        qs = Student.objects.filter(~Q(mobile_no=''))
+        qs = Student.objects.filter(~Q(school_id=''))
 
         if self.q:
             qs = qs.filter(school_id__istartswith=self.q)
@@ -389,3 +390,15 @@ def create_non_existing_student_profile(sender, user, request, **kwargs):
 user_logged_in.connect(create_non_existing_student_profile)
 
 
+@login_required
+def mark_as_paid(request, id):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden()
+
+    penalty = get_object_or_404(Penalty, id=id)
+    penalty.transaction.paid = True
+    penalty.transaction.save()
+    penalty.date_paid = timezone.now()
+    penalty.save()
+
+    return redirect('admin:system_penalty_changelist')

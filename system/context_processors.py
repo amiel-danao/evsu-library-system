@@ -12,18 +12,27 @@ SCHEDULE_DATEFORMAT = "%Y-%m-%d, %I:%M %p"
 SCHEDULE_DATEFORMAT_24H = "%Y-%m-%d, %H:%M"
 MOBILE_NO_REGEX = '^(09)\d{9}$'
 
+MODEL_ICONS = {
+    'Students': 'bi bi-people',
+    'Books': 'bi bi-book',
+    'Issued Books': 'bi bi-clipboard-check',
+    'Penalties': 'bi bi-exclamation-triangle',
+    'Categories': 'bi bi-tag'
+}
+
 def global_context(request):
     return {
         'app_title': admin.site.site_title,
-        'app_short_title': 'NCST Kiosk Book Library',
-        'app_description': 'NCST Kiosk Book Library System',
+        'app_short_title': 'EVSU Book Library',
+        'app_description': 'EVSU Book Library System',
         'app_schedule': 'Mon - Fri : 09.00 AM - 05.00 PM',
         'app_location': '',
         'app_contact_no': '0995-473-4825',
         'today': get_correct_today(),
         'min_time': get_correct_today(format='%I:%M'),
         'user_id': getUserId(request),
-        'mobile_no_regex': MOBILE_NO_REGEX
+        'mobile_no_regex': MOBILE_NO_REGEX,
+        'model_icons': MODEL_ICONS
     }
 
 

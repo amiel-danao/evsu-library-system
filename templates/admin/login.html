@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 
-    <main style="background-image:url('{% static "admin_volt/assets/img/illustrations/signin_bg.jpg" %}');">
+    <main>
         <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
             <div class="container">
                 <div class="row justify-content-center form-bg-image">
@@ -16,7 +16,7 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <img class="img-fluid w-25" src="{% static 'admin_volt/assets/img/favicon/logo.png' %}">
                                 <br>
-                                <p>Admin Sign in</p>
+                                <p>Library Information Management System - Dulag Campus</p>
                             </div>
                             <form method="post" action="{{ app_path }}" class="mt-4">
                                 {% csrf_token %}
@@ -49,12 +49,12 @@
                                     </div>
                                     <!-- End of Form -->
                                     <div class="d-flex justify-content-between align-items-top mb-4">
-                                        <div class="form-check">
+                                        <!-- <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="remember">
                                             <label class="form-check-label mb-0" for="remember">
                                                 Remember me
                                             </label>
-                                        </div>
+                                        </div> -->
 
                                         <div>
                                             {% url 'admin_password_reset' as password_reset_url %}

@@ -1,5 +1,5 @@
 import django_tables2 as tables
-from system.models import BookInstance, OutgoingTransaction
+from system.models import BookInstance, OutgoingTransaction, Penalty
 from django.utils.translation import gettext_lazy as _
 
 
@@ -22,6 +22,17 @@ class OutgoingTransactionTable(tables.Table):
         fields = ("book__book__title", "date_borrowed", "return_date")
         empty_text = _("No books borrowed.")
         attrs = {'class': 'table table-hover shadow records-table'}
+
+
+class PenaltyTable(tables.Table):
+    class Meta:
+        model = Penalty
+        template_name = "django_tables2/bootstrap5.html"
+        fields = ("transaction__paid", "unpaid_penalty", "date_paid")
+        empty_text = _("No records")
+        attrs = {'class': 'table table-hover shadow records-table'}
+
+        
 
     # def render_status(self, value, record):
     #     if record:

@@ -1,3 +1,6 @@
+from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from dal import autocomplete
 from django.utils.translation import gettext as _
 from django import forms
@@ -8,7 +11,7 @@ from system.context_processors import MOBILE_NO_REGEX
 from .models import SMS, CustomUser
 from django.core.exceptions import ValidationError
 from django import forms
-from kiosk_library.managers import CustomUserManager
+from evsu_library.managers import CustomUserManager
 from system.models import Book, BookInstance, IncomingTransaction, OutgoingTransaction, Student
 
 class BookInstanceForm(forms.ModelForm):
@@ -141,3 +144,42 @@ class SMSForm(forms.ModelForm):
         widgets = {
             'students': autocomplete.ModelSelect2Multiple(url='system:student-autocomplete')
         }
+
+
+class BookIssuanceForm(forms.ModelForm):
+    # recepients = forms.Field(widget=autocomplete.ListSelect2(url='system:student-autocomplete'))
+    # message = forms.CharField(widget=forms.Textarea(attrs={"rows":6, "maxlength":150}), required=True)
+    # borrower = forms.CharField(widget=forms.TextInput(), required=True)
+
+    # class Meta:
+    #     model = OutgoingTransaction
+    #     fields = ('book', 'borrower', 'date_borrowed', 'return_date')
+    #     widgets = {
+    #         'borrower': autocomplete.ModelSelect2(url='system:student-autocomplete')
+    #     }
+
+    class Meta:
+        model = OutgoingTransaction
+        fields = ('__all__')
+        widgets = {
+            'borrower': autocomplete.ModelSelect2(url='system:student-autocomplete')
+        }
+
+
+
+class MyCrispyForm(forms.ModelForm):
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        # self.helper.form_id = 'id-my-form'
+        self.helper.form_class = 'form-control'
+        # self.helper.form_method = 'post'
+        # self.helper.add_input(Submit('submit', 'Submit'))
+
+    class Meta:
+        model = Book
+        # See note here: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.form
+        fields = []

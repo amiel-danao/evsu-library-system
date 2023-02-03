@@ -12,7 +12,7 @@ class BookFilter(django_filters.FilterSet):
 
     class Meta:
         model = Book
-        fields = ['author', 'isbn', 'genre', 'classification', 'publish_date']
+        fields = ['author', 'isbn', 'genre',]
 
 
 class BookInstanceFilter(django_filters.FilterSet):
@@ -26,7 +26,7 @@ class BookInstanceFilter(django_filters.FilterSet):
 
     class Meta:
         model = BookInstance
-        fields = ['book__author', 'book__isbn', 'book__genre', 'book__classification', "book__publish_date", 'location', 'status']
+        fields = ['book__author', 'book__isbn', 'book__genre','location', 'status']
 
 
 class OutgoingTransactionFilter(django_filters.FilterSet):

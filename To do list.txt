@@ -1,29 +1,13 @@
-Main App
-Transaction Page
-[x] SMS editable by admin <-- 
-[ ] generate daily report <-- dashboard info about transactions
-[ ] auto sms- during beginning of transaction and before return date of book
+Sir! Our system in title Library Management System or LSM
 
-[x] Admin only login
-[X] Status of book(available, borrowed)
-[  ] Physical status of book, before/after borrowed
-[  ] Quantity of books
-[  ] Searching of books by Category
-[  ] Rating of book,  borrowed days are adjusted based on demand
-[  ] Indicate physical location of the book in the shelf
-[  ] Scanning during borrowing process 
+Our system Menu:
 
-User App
-[X] Login/Register Page
-[X] Email verification during registration, ncst email only
-[X] Reminder notification about borrowed book
-[X] Student Profile Page
-[X] Book Search Page
-[X] List of borrowed books Page
-[ ] phone number field required
+[] Students - dito sa student ang ipapaayos namin ay ang students name when you click the name makikita ang information ng student kung pwedi malagyan ng image or picture pwedi po
 
+[] Books- dito naman sa books dito makikita ang books dapat when you click the books lalabas ang content na nakafelterize at dapat isa lang ang mahiram kada title ng book piro makakahiram ang student kahit anung klasing books basta iba iba Yung title at klasi...at kung pwedi malagyan ng photos of book and the contents
 
+[] Issued book- dito naman makikita ang mga borrowers when  you click the name of the students nakikita dun ang mga books na kanilang hiniram
 
-Mobile
-[  ] Navigation Drawer (to navigate to diffrent page)
-09686640607
+[] Penalties- dito naman makikita ang history transaction dito makikita ang mga pangalan ng borrowers na nag overdue na at kailangan na nila magbayad ng fines kun saan ang admin ay mag sesend ng email notification sa mga borrowers upang ma inform.. and once you click the name of the borrower dapat makikita dito ang history na mga hiniram niya at total fine na kanyang babayaran 
+
+[] Categories- dito naman once you click the categories of the book makikita dito Yung books base sa kanyang category nga naka feltirize  and the admin can add / delete

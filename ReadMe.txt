@@ -52,7 +52,7 @@ Open xampp
 Start Mysql and Apache
 Click Mysql -> Admin
 In Browser, Click New (to create a database)
-type in database name : kiosk_library$kiosk_library_database
+type in database name : evsu_library$evsu_library_database
 then Click create
 
 In windows start menu type in: environment variables

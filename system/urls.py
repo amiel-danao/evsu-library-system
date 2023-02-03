@@ -25,4 +25,5 @@ urlpatterns = [
         name='student-autocomplete',
     ),
     path('admin/send_sms/', views.send_sms, name='send_sms'),
+    path('admin/mark_as_paid/<int:id>/', views.mark_as_paid, name='mark_as_paid'),
 ]

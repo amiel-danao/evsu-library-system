@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.utils.text import capfirst
 from django.urls import NoReverseMatch, Resolver404, resolve, reverse
 from django.contrib import admin
@@ -5,6 +6,46 @@ from django.apps import apps
 
 
 class MyAdminSite(admin.AdminSite):
+
+    def index(self, request, extra_context=None):
+        """
+        Display the main admin index page, which lists all of the installed
+        apps that have been registered in this site.
+        """
+        app_list = self.get_app_list(request)
+
+        context = {
+            **self.each_context(request),
+            "title": self.index_title,
+            "subtitle": None,
+            "app_list": app_list,
+            **(extra_context or {}),
+        }
+
+        request.current_app = self.name
+        # url = app_list[0]['models'][0]['admin_url']
+
+        return redirect('admin:system_student_changelist')
+        # TemplateResponse(
+        #     request, self.index_template or "admin/index.html", context
+        # )
+
+    def get_app_list(self, request):
+        app_list = super().get_app_list(request)
+        # reorder the app list as you like
+        for app in app_list:
+            if app['app_label'] == 'system':
+                ordering = {
+                    'Students': 1,
+                    'Books': 2,
+                    'Issued Books': 3,
+                    'Penalties': 4,
+                    'Categories': 5
+                }
+                app['models'].sort(key=lambda x: ordering[x['name']])
+        
+        return app_list
+
     def _build_app_dict(self, request, label=None):
         """
         Build the app dictionary. The optional `label` parameter filters models

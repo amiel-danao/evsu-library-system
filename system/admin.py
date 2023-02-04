@@ -1,3 +1,4 @@
+import logging
 from django.utils.html import strip_tags
 from smtplib import SMTPDataError
 from django.contrib import messages #import messages
@@ -197,17 +198,18 @@ class StudentAdmin(admin.ModelAdmin):
             
             if random_valid_password is not None:
                 try:
-                    href = ''
+                    href = request.build_absolute_uri('/')[:-1]
                     html_message = f'We would like to inform you that your account is now ready and created by the admin, \nThis is your initial password : <b>{random_valid_password}</b>, please do not share your password to anyone.\n If you want to change your password, you can do it by clicking this <a href="{href}">link</a>'
                     send_mail(
                         'EVSU - Student Account Registration',
-                        strip_tags(messages),
+                        strip_tags(html_message),
                         'evsu.gmail.com',
                         (obj.email, ),
                         fail_silently=False,
                         html_message=html_message
                     )
                 except SMTPDataError as error:
+                    logging.error(error)
                     messages.error(f'{error}\n Please try again later.')
         super(StudentAdmin, self).save_model(request, obj, form, change)
 

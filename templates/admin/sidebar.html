@@ -6,6 +6,7 @@
     <a class="navbar-brand me-lg-5" href="/">
         <img class="navbar-brand-dark" src="{% static 'admin_volt/assets/img/favicon/logo.png' %}" alt="EVSU logo"/>
         <img class="navbar-brand-light" src="{% static 'admin_volt/assets/img/favicon/logo.png' %}" alt="EVSU logo"/>
+        
     </a>
     <div class="d-flex align-items-center">
         <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -52,8 +53,12 @@
                 
             </li> -->
             <li class="nav-item text-center">
-            <img class="w-75 text-center p-2 img-fluid" src="/static/admin_volt/assets/img/favicon/logo.png" alt="">
-                <div class="text-center text-black font-poppins">
+            {% if not profile.picture %}
+            <img class="w-75 text-center p-2 img-fluid" src="/static/admin_volt/assets/img/favicon/logo.png" alt="">            
+            {% else %}
+            <img class="w-75 text-center p-2 rounded-circle object-fit-cover" src="{{profile.picture.url}}" alt="profile picture"/>
+            {% endif %}    
+            <div class="text-center text-black font-poppins">
                     {% if request.user.is_superuser %}
                     <p class="p-0 m-0 text-sm font-poppins">Administrator</p>
                     {% else %}

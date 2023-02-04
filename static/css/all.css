@@ -150,3 +150,10 @@ th a, th span{
   cursor: pointer;
   color:rgb(14 159 110);
 }
+
+.object-fit-cover {
+  padding: 0px;
+  width:120px;
+  height:120px;
+  object-fit:cover
+}

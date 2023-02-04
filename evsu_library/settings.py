@@ -119,7 +119,7 @@ else:
             "ENGINE": "django.db.backends.mysql",
             "NAME": "evsu$evsu_database",
             "USER": "evsu",
-            "PASSWORD": "notCommonPassword1234",
+            "PASSWORD": "notCommonPassword123$",
             "HOST": "evsu.mysql.pythonanywhere-services.com",
             "PORT": "3306",
         }

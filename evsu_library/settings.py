@@ -117,10 +117,10 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": "evsu_library$evsu_library_database",
-            "USER": "evsu_library",
-            "PASSWORD": "notcommonpassword1234",
-            "HOST": "evsu_library.mysql.pythonanywhere-services.com",
+            "NAME": "evsu$evsu_database",
+            "USER": "evsu",
+            "PASSWORD": "notCommonPassword1234",
+            "HOST": "evsu.mysql.pythonanywhere-services.com",
             "PORT": "3306",
         }
     }

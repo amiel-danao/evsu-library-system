@@ -43,7 +43,7 @@ class PenaltyTable(tables.Table):
     class Meta:
         model = Penalty
         template_name = "django_tables2/bootstrap5.html"
-        fields = ("transaction__borrower__school_id", "transaction__borrower__full_name", "transaction__returned", "unpaid_penalty", "date_paid")
+        fields = ("transaction__borrower__school_id", "transaction__borrower__full_name", "transaction__book__title", "transaction__returned", "unpaid_penalty", "date_paid")
         empty_text = _("No records")
         attrs = {'class': 'table table-hover shadow records-table'}
 

@@ -45,7 +45,7 @@ from django.core import management
 def index(request):
 
 
-    return render(request=request, template_name='system/index.html')
+    return redirect('system:books')
 
 
 def show_qr(request, pk):

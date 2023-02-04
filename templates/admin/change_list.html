@@ -78,15 +78,46 @@
                     
                 {% block search %}{% search_form cl %}{% endblock %}
 
-
+<!-- {% if filter %}
+                <div>
+                    <button type="button" class="btn btn-primary btn-inline mb-1" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        Filter <i class="bi bi-funnel"></i>
+                    </button>
+                </div>
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form action="" method="get" class="form form-inline mb-2">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="filterModalLabel">Filter</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                    {% bootstrap_form filter.form  %}
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Filter <i class="bi bi-funnel"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                {% endif %} -->
 
                 {% if cl.has_filters %}
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div>
+                <button type="button" class="btn btn-primary btn-inline mb-1" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    Filter <i class="bi bi-funnel"></i>
+                </button>
+            </div>
+                    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <form action="" method="get" class="form form-inline mb-2">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Search</h1>
+                                    <h1 class="modal-title fs-5" id="filterModalLabel">Filter</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -97,7 +128,7 @@
                                         
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Search <i class="bi bi-search"></i></button>
+                                        <button type="submit" class="btn btn-primary">Filter <i class="bi bi-funnel"></i></button>
                                     </div>
                                 </div>
                             </form>

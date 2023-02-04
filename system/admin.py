@@ -16,6 +16,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils import timezone
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.db.models import Q
 
 from system.tables import PenaltyTable
 
@@ -112,12 +113,21 @@ class BookAdmin(NoRelatedFieldButtons):
     fields = ('isbn', 'author', 'title', 'genre', 'inventory_stock', 'book_price', 'overtime_fine')
     list_display = ('isbn', 'author', 'book_title', 'category', 'price', 'stock', 'manage_borrow')
     search_fields = ('isbn', 'title',)
-    
+    list_filter = ('genre', )
+
     list_display_links = None
     
-    # def __init__(self, *args, **kwargs):
-    #     super(NoRelatedFieldButtons, self).__init__(*args, **kwargs)
-    #     self.list_display_links = (None, )
+    def changelist_view(self, request, extra_context=None):
+        request.GET._mutable=True
+        queryset = self.get_queryset(request)
+        queryset = queryset.filter(Q(author=request.GET.pop('author', None)))
+        filter = BookFilter(request.GET, queryset=queryset)
+        my_context = {
+            'filter' : filter
+        }
+        request.GET._mutable=False
+        return super(BookAdmin, self).changelist_view(request,
+            extra_context=my_context)
 
     def book_title(self, obj):
         return obj.title
@@ -154,6 +164,7 @@ class StudentAdmin(admin.ModelAdmin):
     fields = ('first_name', 'middle_name', 'last_name', 'gender', 'school_id', 'year', 'section', 'address', 'mobile_no', 'email', 'qualified')
     list_display = ('school_id', 'full_name', 'year_and_section', 'mobile_no', 'manage_me')
     list_display_links = ('manage_me', )
+    
 
     def full_name(self, obj):
         return f'{obj.first_name} {obj.last_name}'

@@ -2,12 +2,12 @@ Sir! Our system in title Library Management System or LSM
 
 Our system Menu:
 
-[] Students - dito sa student ang ipapaayos namin ay ang students name when you click the name makikita ang information ng student kung pwedi malagyan ng image or picture pwedi po
+[OK] Students - dito sa student ang ipapaayos namin ay ang students name when you click the name makikita ang information ng student kung pwedi malagyan ng image or picture pwedi po
 
-[] Books- dito naman sa books dito makikita ang books dapat when you click the books lalabas ang content na nakafelterize at dapat isa lang ang mahiram kada title ng book piro makakahiram ang student kahit anung klasing books basta iba iba Yung title at klasi...at kung pwedi malagyan ng photos of book and the contents
+[OK] Books- dito naman sa books dito makikita ang books dapat when you click the books lalabas ang content na nakafelterize at dapat isa lang ang mahiram kada title ng book piro makakahiram ang student kahit anung klasing books basta iba iba Yung title at klasi...at kung pwedi malagyan ng photos of book and the contents
 
-[] Issued book- dito naman makikita ang mga borrowers when  you click the name of the students nakikita dun ang mga books na kanilang hiniram
+[OK] Issued book- dito naman makikita ang mga borrowers when  you click the name of the students nakikita dun ang mga books na kanilang hiniram
 
-[] Penalties- dito naman makikita ang history transaction dito makikita ang mga pangalan ng borrowers na nag overdue na at kailangan na nila magbayad ng fines kun saan ang admin ay mag sesend ng email notification sa mga borrowers upang ma inform.. and once you click the name of the borrower dapat makikita dito ang history na mga hiniram niya at total fine na kanyang babayaran 
+[OK] Penalties- dito naman makikita ang history transaction dito makikita ang mga pangalan ng borrowers na nag overdue na at kailangan na nila magbayad ng fines kun saan ang admin ay mag sesend ng email notification sa mga borrowers upang ma inform.. and once you click the name of the borrower dapat makikita dito ang history na mga hiniram niya at total fine na kanyang babayaran 
 
-[] Categories- dito naman once you click the categories of the book makikita dito Yung books base sa kanyang category nga naka feltirize  and the admin can add / delete
+[OK] Categories- dito naman once you click the categories of the book makikita dito Yung books base sa kanyang category nga naka feltirize  and the admin can add / delete

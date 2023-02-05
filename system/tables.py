@@ -34,8 +34,13 @@ class OutgoingTransactionTable(tables.Table):
         attrs = {'class': 'table table-hover shadow records-table'}
 
 
+class SummingColumn(tables.Column):
+    def render_footer(self, bound_column, table):
+        return f"₱{sum(bound_column.accessor.resolve(row) for row in table.data)}"
+
+
 class PenaltyTable(tables.Table):
-    unpaid_penalty = tables.Column(verbose_name= 'Penalty' )
+    unpaid_penalty = SummingColumn(verbose_name= 'Penalty' )
     
     def render_unpaid_penalty(self, value):
         return f'₱{value}'

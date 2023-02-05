@@ -41,13 +41,13 @@ class NoRelatedFieldButtons(admin.ModelAdmin):
             formfield.widget = select_widget
         return formfield
 
-    def get_form(self, request, obj, change, **kwargs):
-        form = super().get_form(request, obj, change, **kwargs)
-        return form
+    # def get_form(self, request, obj, change, **kwargs):
+    #     form = super().get_form(request, obj, change, **kwargs)
+    #     return form
 
 
 @admin.register(Genre)
-class GenreAdmin(NoRelatedFieldButtons):
+class GenreAdmin(admin.ModelAdmin):
     exclude = ('is_active', 'was_deleted')
     search_fields = ('name',)
     

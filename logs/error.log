@@ -1,1 +1,495 @@
 
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+TypeError: get_form() missing 1 required positional argument: 'change'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 121170
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151563
+Internal Server Error: /admin/system/genre/add/
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1890, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1750, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 1785, in _changeform_view
+    fieldsets = self.get_fieldsets(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 384, in get_fieldsets
+    return [(None, {"fields": self.get_fields(request, obj)})]
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 375, in get_fields
+    form = self._get_form_for_get_fields(request, obj)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 756, in _get_form_for_get_fields
+    return self.get_form(request, obj, fields=None)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\contrib\admin\options.py", line 807, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 648, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 306, in __new__
+    fields = fields_for_model(
+  File "c:\Users\Administrator\Documents\Github\evsu-library-system\.venv\lib\site-packages\django\forms\models.py", line 228, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "C:\Users\Administrator\Documents\Github\evsu-library-system\system\admin.py", line 34, in formfield_for_dbfield
+    formfield.widget.can_delete_related = False
+AttributeError: 'NoneType' object has no attribute 'widget'
+"GET /admin/system/genre/add/ HTTP/1.1" 500 151426

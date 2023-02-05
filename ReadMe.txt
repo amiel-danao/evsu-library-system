@@ -26,15 +26,6 @@ Select the first option : Venv
 Wait for the process to finish (this will install all the dependencies indicated in requirements.txt)
 
 
-python --version //To check if the python was properly installed
-
-
-python -m venv venv //Creates a virtual environment folder,
-cd venv/Scripts -> Enter
-activate -> Enter
-cd ../.. -> Enter
-pip install -r requirements.txt //this will install all dependencies
-
 Open xampp 
 Start Mysql and Apache
 Click Mysql -> Admin
@@ -48,6 +39,11 @@ Under System Variables add new
 Variable name : DJANGO_ENV
 Variable value : LOCAL
 
+Restart Vscode
+
+In vscode
+Press Ctrl + Shift + `  to open a new command prompt
+
 python manage.py makemigrations //creates a mapping of python classes into database
 python manage.py migrate // this will perform the actual conversion of python classes into mysql database
 python manage.py createsuperuser //this will create admin account
@@ -55,10 +51,3 @@ python manage.py createsuperuser //this will create admin account
 
 python manage.py runserver //This will run the web app
 
-
-Setup Android Source code
-
-Open vscode source code
-Install necessary extensions:
-Flutter
-Dart
